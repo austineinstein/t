@@ -19,7 +19,7 @@ class InstallNodePackage(install):
         install.run(self)
 
 setup(
-    name="my_node_ts_module",
+    name="thou",
     version="0.1.0",
     description="A Python wrapper for a Node.js/TypeScript module using pnpm",
     packages=find_packages(),
@@ -28,7 +28,7 @@ setup(
     cmdclass={"install": InstallNodePackage},
     entry_points={
         "console_scripts": [
-            "my_module_cli=my_module.cli:main",
+            "thou-cli=thou.cli:main",
         ]
     },
 )
