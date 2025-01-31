@@ -7,7 +7,7 @@
     "build": "tsc",
     "start": "node dist/index.js"
   },
-  "author": "osana ad",
+  "author": "osana ad, tegajoel",
   "license": "ISC",
   "dependencies": {
     "@helia/unixfs": "^3.0.7",
