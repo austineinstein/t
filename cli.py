@@ -1,5 +1,5 @@
 import argparse
-from thou import ThouModule
+from thou import TINATB
 
 def main():
     parser = argparse.ArgumentParser(description="CLI for the Thou Node.js/TypeScript module")
@@ -8,7 +8,7 @@ def main():
     
     args = parser.parse_args()
 
-    module = ThouModule()
+    module = TINATB
     
     try:
         result = module.call_function(args.function, *args.args)

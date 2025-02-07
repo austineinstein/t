@@ -3,3 +3,5 @@
 .github*
 package-lock.json
 node_modules
+thou.egg-info 
+build

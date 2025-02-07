@@ -1,34 +1,36 @@
 from setuptools import setup, find_packages
 from setuptools.command.install import install
 import subprocess
+import json
+import os
 
-class InstallNodePackage(install):
-    """Custom installation class to ensure pnpm is used for setup."""
-
+class PostInstallCommand(install):
+    """Post-installation command to install pnpm packages."""
     def run(self):
-        # Check if pnpm is installed
-        try:
-            subprocess.run(["pnpm", "--version"], check=True)
-        except FileNotFoundError:
-            raise RuntimeError("pnpm is required but not found! Install it via: npm install -g pnpm")
-
-        # Install dependencies and build the project
-        subprocess.run(["pnpm", "install"], check=True)
-        subprocess.run(["pnpm", "build"], check=True)
-
+        # First run the standard install
         install.run(self)
+        
+        # Check if package.json exists
+        if os.path.exists('package.json'):
+            try:
+                # First ensure pnpm is installed globally
+                subprocess.check_call(['npm', 'install', '-g', 'pnpm'])
+                # Run pnpm install
+                subprocess.check_call(['pnpm', 'install'])
+            except subprocess.CalledProcessError as e:
+                print(f"Failed to install pnpm packages: {e}")
+            except FileNotFoundError:
+                print("npm/pnpm not found. Please install Node.js first.")
 
 setup(
     name="thou",
     version="0.1.0",
-    description="A Python wrapper for a Node.js/TypeScript module using pnpm",
     packages=find_packages(),
-    include_package_data=True,
-    install_requires=["PyExecJS"],
-    cmdclass={"install": InstallNodePackage},
-    entry_points={
-        "console_scripts": [
-            "thou-cli=thou.cli:main",
-        ]
-    },
+    cmdclass={
+        'install': PostInstallCommand,
+    }, 
+    # Add other setup configurations as needed
 )
+
+
+
