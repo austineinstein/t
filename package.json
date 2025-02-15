@@ -10,6 +10,8 @@
   "author": "osana ad, tegajoel",
   "license": "ISC",
   "dependencies": {
+    "@alchemy/aa-alchemy": "^3.8.0",
+    "@alchemy/aa-core": "^3.19.0",
     "@helia/unixfs": "^3.0.7",
     "@jest/globals": "^29.7.0",
     "@types/react": "^19.0.8",
@@ -17,9 +19,11 @@
     "dotenv": "^16.4.5",
     "helia": "^4.2.5",
     "multiformats": "^13.3.1",
+    "permissionless": "^0.2.34",
     "ts-node": "^10.9.2",
-    "viem": "^2.21.38",
-    "web3": "^4.16.0"
+    "viem": "^2.23.2",
+    "web3": "^4.16.0",
+    "zksync-ethers": "^6.16.1"
   },
   "devDependencies": {
     "typescript": "^5.7.3"

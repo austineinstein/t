@@ -5,3 +5,4 @@ package-lock.json
 node_modules
 thou.egg-info 
 build
+src/paymaster.ts
