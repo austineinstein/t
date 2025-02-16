@@ -14,6 +14,10 @@ For a plain English explanation of the code, visit:
 
 **FanCradle** is a UK-based record label specialising in Afrobeats, focusing on the genre's cultural evolution and impact within the UK. It highlights Afrobeats' vibrant and eclectic nature and its influence on the cultural fabric of the UK, particularly in music and fashion.
 
+### SourceCode
+Members, Contributors and Investors, request access:
+https://github.com/FanCradle/DAO
+
 ## Key Features of FanCradle
 
 1. **Focus on Afrobeats**: Dedicated to promoting the rich heritage and dynamic evolution of Afrobeats, blending traditional African rhythms with contemporary sounds to create a globally influential genre.
