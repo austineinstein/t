@@ -7,7 +7,7 @@
     "build": "tsc",
     "start": "node dist/index.js"
   },
-  "author": "osana ad, tegajoel",
+  "author": "AUTHORS",
   "license": "ISC",
   "dependencies": {
     "@alchemy/aa-alchemy": "^3.8.0",
