@@ -2,6 +2,10 @@
 
 **Thou** integrates the packages you need so you can write once, deploy everywhere. This tool supports our music/content model to upsell products for our creators.
 
+**1st steps to run:**
+- Run setup.py
+- pnpm run start
+
 ### Try Here
 - Explore [TINATB](https://fancradle.com/tinatb) to try the platform
 - Use this [repo](https://github.com/austineinstein/blog) if you blog. I would also use medium for a # of reasons. 
