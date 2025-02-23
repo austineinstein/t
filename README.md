@@ -1,9 +1,9 @@
 # FanCradle Blogs
 
-**Thou** integrates the packages you need so you can write once, deploy everywhere. This tool supports our music/content model to upsell products for our creators.
+**Thou** integrates the packages you need so you can write once, and deploy everywhere. This tool supports our music/content model to upsell products for our creators.
 
-**1st steps to run:**
-- Run setup.py
+**Steps to run:**
+- setup.py install
 - pnpm run start
 
 ### Try Here
@@ -18,8 +18,8 @@ For a plain English explanation of the code, visit:
 
 **FanCradle** is a UK-based record label specialising in Afrobeats, focusing on the genre's cultural evolution and impact within the UK. It highlights Afrobeats' vibrant and eclectic nature and its influence on the cultural fabric of the UK, particularly in music and fashion.
 
-### SourceCode
-Members, Contributors and Investors, request access:
+### Source Code
+Add accounts/contracts:
 https://github.com/FanCradle/DAO
 
 ## Key Features of FanCradle
