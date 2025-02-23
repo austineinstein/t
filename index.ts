@@ -1,5 +1,7 @@
-import ThePlay from "./src/contracts"
+//import ThePlay from "./src/contracts"
 import SearchResults from "./app/page"
+// url to write operations..
+
 // import { CID } from 'multiformats/cid'
 
 // import type { Helia } from '@helia/interface'
@@ -79,7 +81,7 @@ async function loadMusicFromIPFS(ipfsHash: string) {
     
     module.exports = {
       SearchResults, //account comes from a live web3 API
-      ThePlay, // contract -described in [tinatb]/index privates
+      //ThePlay contract -described in [tinatb]/index privates
       initializeAudioPlayer,
       loadMusicFromIPFS,
       getPrice

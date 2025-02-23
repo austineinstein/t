@@ -78,8 +78,6 @@ const paymasterAddr = validateAddress(process.env.TOKEN_ADDRESS!);
         })),
     });
 
-    const txHash = await client.waitForUserOperationTransaction(result);
-    console.log("Transaction Hash:", txHash);
 
 } catch (error) {
     console.error("Transaction failed:", error);

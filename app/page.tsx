@@ -1,5 +1,6 @@
 import ProductGrid from "./components/product-grid"
 import Sidebar from "./components/sidebar"
+//import UserOpWithdrawal from "../src/user_ops"
 // import Button from './components/ui/button'
 // import Button from "./components/ui/button"/
 
@@ -23,6 +24,7 @@ export default function SearchResults() {
       <div className="flex flex-col lg:flex-row gap-8">
         <Sidebar className="hidden lg:block w-64 flex-none" />
         <ProductGrid />
+        <UserOpWithdrawal />
       </div>
     </div>
   )

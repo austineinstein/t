@@ -1,12 +1,9 @@
 {
   "name": "thou",
   "version": "1.0.0",
-  "description": "**Thou** integrates the packages you need so you can write once, deploy everywhere. This tool supports our music/content model to sell products for our creators.",
+  "description": "Thou integrates the packages you need so you can write once, deploy everywhere. This tool supports our music/content model to sell products for our creators.",
   "main": "index.ts",
-  "scripts": {
-    "build": "tsc",
-    "start": "node dist/index.js"
-  },
+  "scripts": {},
   "author": "AUTHORS",
   "license": "ISC",
   "dependencies": {
@@ -19,6 +16,7 @@
     "dotenv": "^16.4.5",
     "helia": "^4.2.5",
     "multiformats": "^13.3.1",
+    "oauth4webapi": "^3.3.0",
     "permissionless": "^0.2.34",
     "ts-node": "^10.9.2",
     "viem": "^2.23.2",
