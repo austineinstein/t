@@ -38,6 +38,15 @@ const validateAddress = (addr: string): Hex => {
         }
         return addr as Hex;
 };
+
+const validatePrivateKey = (key: string): Hex => {
+    if (!/^(0x)?[a-fA-F0-9]{64}$/.test(key)) {
+      throw new Error(`Invalid private key format`);
+    }
+    return key.startsWith('0x') ? key as Hex : `0x${key}` as Hex;
+  };
+  
+
 const contractAddr = validateAddress(process.env.CONTRACT_ADDRESS!);
 const paymasterAddr = validateAddress(process.env.TOKEN_ADDRESS!);
 
@@ -65,6 +74,7 @@ const paymasterAddr = validateAddress(process.env.TOKEN_ADDRESS!);
             functionName: "withdraw",
             args: [amount, destAddr]
             }),//add custom PaymasterParams
+            //nonce: client.getNonce() + x,
         };
     });
     const gasEstimates = await Promise.all(
@@ -78,7 +88,40 @@ const paymasterAddr = validateAddress(process.env.TOKEN_ADDRESS!);
         })),
     });
 
+    const txHash = await client.waitForUserOperationTransaction(result);
+    console.log("Transaction Hash:", txHash);
 
+    /**Balance Reading */
+    // State Verification 
+    const finalBalances = await Promise.all(
+        uos.map(async (uo) => {
+            //const [amount, destAddr] = uo.args;
+            const destAddr = validateAddress(process.env.DEST_ADDRESS!)
+            return client.readContract({
+                address: contractAddr,
+                abi: abiData,
+                functionName: "getBalance",
+                args: [destAddr],
+            });
+        })
+    );
+    console.log("Verified Balances:", finalBalances);
+
+    /** 
+    const executeWithFallback = async (uo: UserOperation) => {
+        try {
+          const result = await client.sendUserOperation(uo);
+          const txHash = await client.waitForUserOperationTransaction(result);
+          return txHash;
+        } catch (error) {
+          await client.simulateTransactionRollback(uo);
+          throw new Error(`Transaction failed: ${error.message}`);
+        }
+      };
+      
+      const results = await Promise.all(uos.map(executeWithFallback));
+      */
+      
 } catch (error) {
     console.error("Transaction failed:", error);
     process.exit(1);
