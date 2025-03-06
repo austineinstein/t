@@ -7,15 +7,15 @@
   "author": "AUTHORS",
   "license": "ISC",
   "dependencies": {
-    "@alchemy/aa-alchemy": "^3.8.0",
+    "@alchemy/aa-alchemy": "^3.19.0",
     "@alchemy/aa-core": "^3.19.0",
-    "@helia/unixfs": "^3.0.7",
+    "@helia/unixfs": "^4.0.2",
     "@jest/globals": "^29.7.0",
-    "@types/react": "^19.0.8",
-    "@types/react-dom": "^19.0.3",
-    "dotenv": "^16.4.5",
-    "helia": "^4.2.5",
-    "multiformats": "^13.3.1",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "dotenv": "^16.4.7",
+    "helia": "^5.2.1",
+    "multiformats": "^13.3.2",
     "oauth4webapi": "^3.3.0",
     "permissionless": "^0.2.34",
     "ts-node": "^10.9.2",
@@ -24,7 +24,10 @@
     "zksync-ethers": "^6.16.1"
   },
   "devDependencies": {
-    "typescript": "^5.7.3"
+    "typescript": "^5.8.3"
   },
-  "packageManager": "pnpm@8.0.0"
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "packageManager": "pnpm@8.3.1"
 }
