@@ -1,19 +1,17 @@
 # FanCradle Blogs
 
-**Thou** integrates the packages you need so you can write once, and deploy everywhere. This tool supports our music/content model to upsell products for our creators.
-
 **Steps to run:**
 - setup.py install
 - pnpm run start
 
 ### Try Here
 - Explore [TINATB](https://fancradle.com/tinatb) to try the platform
-- Use this [repo](https://github.com/austineinstein/blog) if you blog. I would also use medium for a # of reasons. 
+- Use this [repo](https://github.com/austineinstein/blog) if you blog. I would also use a medium for many reasons. 
 - [FanCradle](https://fancradle.com/tinatb)
 - ABI: `artifacts/tinatb`
 
 ### Code Explanation
-For a plain English explanation of the code, visit:
+English explanation of the code, visit:
 - [FanC Token: Investing in Art (Part 1)](https://medium.com/@austinagbo/fanc-token-investing-in-art-pt-1-83ad7fe97f28)
 
 **FanCradle** is a UK-based record label specialising in Afrobeats, focusing on the genre's cultural evolution and impact within the UK. It highlights Afrobeats' vibrant and eclectic nature and its influence on the cultural fabric of the UK, particularly in music and fashion.
