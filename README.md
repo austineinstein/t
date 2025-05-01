@@ -14,7 +14,7 @@
 English explanation of the code, visit:
 - [FanC Token: Investing in Art (Part 1)](https://medium.com/@austinagbo/fanc-token-investing-in-art-pt-1-83ad7fe97f28)
 
-**FanCradle** is a UK-based record label specialising in Afrobeats, focusing on the genre's cultural evolution and impact within the UK. It highlights Afrobeats' vibrant and eclectic nature and its influence on the cultural fabric of the UK, particularly in music and fashion.
+**FanCradle** is a UK-based record label specialising in Afrobeats, focusing on the genre's cultural evolution and impact within the UK. Highlights Afrobeats' vibrant and eclectic nature and its influence on the cultural fabric of the UK, particularly in music and fashion.
 
 ### Source Code
 Add accounts/contracts:
