@@ -1,3 +1,6 @@
+/**
+ * For Module Users(Dev)
+ */
 //import ThePlay from "./src/contracts"
 import SearchResults from "./app/page"
 // url to write operations..
@@ -69,7 +72,7 @@ async function loadMusicFromIPFS(ipfsHash: string) {
 }
 
     async function getLatestMusicHash() {
-        //fetching Osana AD's fire creations
+        //fetching creator's fire creations
         return "bafybeidlpe3agjgpan22aqv4iu54y7txhoairv5m3scg4iphyhkdcbfpx4"
     }
     
@@ -80,7 +83,7 @@ async function loadMusicFromIPFS(ipfsHash: string) {
     //something like
     
     module.exports = {
-      SearchResults, //account comes from a live web3 API
+      SearchResults, // comes from a live web3 gateway
       //ThePlay contract -described in [tinatb]/index privates
       initializeAudioPlayer,
       loadMusicFromIPFS,

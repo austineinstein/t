@@ -6,3 +6,4 @@ node_modules
 thou.egg-info 
 build
 src/paymaster.ts
+dist/bundle.js

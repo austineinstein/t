@@ -2,12 +2,12 @@
   "name": "thou",
   "version": "1.0.0",
   "description": "Thou integrates the packages you need so you can write once, deploy everywhere. This tool supports our music/content model to sell products for our creators.",
-  "main": "index.ts",
+  "main": "server/server.js",
   "private": false,
   "scripts": {
-    "dev": "bun --hot src/app/index.tsx",
-    "build": "bun build src/app/index.tsx --outfile=dist/bundle.js",
-    "start": "node bundle.js",
+    "build": "python setup.py",
+    "start": "node server/server.js",
+    "dev": "nodemon server.js",
     "format": "bunx prettier --write .",
     "lint": "bunx eslint . --ext .ts,.tsx"
   },
