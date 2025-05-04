@@ -5,6 +5,7 @@
   "main": "server/server.js",
   "private": false,
   "scripts": {
+    "bun-dev": "pip3 install -r requirements.txt && python setup.py",
     "build": "bun build src/app/index.tsx --outfile=dist/bundle.js",
     "start": "node server/server.js",
     "dev": "nodemon server.js",
