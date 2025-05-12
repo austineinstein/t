@@ -10,13 +10,28 @@
     <h1>$FANC.DEV</h1>
     <div class="music-player">
         <audio controls id="audio-player">
-            <source src="" type="audio/mpeg">
+            <source src="" type="audio/mpeg" id="audio-source">
             Your browser does not support the audio element.
         </audio>
     </div>
     <button id="load-music">Load Music from IPFS</button>
+    <script src="dist/bundle.js"></script>
     <script type="module">
         import { createClient } from 'https://esm.sh/viem'
+
+        const CID = "bafybeidlpe3agjgpan22aqv4iu54y7txhoairv5m3scg4iphyhkdcbfpx4"
+        const ipfsGateway = "https://ipfs.io/ipfs/";
+
+        const audioPlayer = document.getElementById("audio-player");
+        const audioSource = document.getElementById("audio-source");
+        const loadButton = document.getElementById("load-music");
+
+        loadButton.addEventListener("click", () => {
+            const fullUrl = `${ipfsGateway}${CID}`;
+            audioSource.src = fullUrl;
+            audioPlayer.load();
+            audioPlayer.play();
+        });
     </script>
     
 </body>
