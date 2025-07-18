@@ -1,38 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>$FANC.DEV Curator</title>
-    <!--Receive Tracks-->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shopnet Curator</title>
+  <meta name="description" content="Submit music and collaborate on fancradle. Upload your audio to IPFS and get involved." />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "fancradle",
+    "alternateName": "$FANC.DEV",
+    "description": "A genre-bending multimedia project inviting collaborators to submit music and participate in an upcoming sci-fi thriller film.",
+    "genre": ["Sci-Fi Thriller", "Psychological Thriller", "Time Travel", "Nonlinear Narrative"],
+    "keywords": [
+      "Temporal Pincer",
+      "Memory Manipulation",
+      "Multiverse Theory",
+      "Real-Time Tension",
+      "High Frame Rate",
+      "Glitch Aesthetics",
+      "Puzzle Narrative"
+    ],
+    "creator": {
+      "@type": "Person",
+      "name": "Anonymous"
+    },
+    "dateCreated": "2025-07-18"
+  }
+  </script>
+
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 2rem;
+      background: #f9f9f9;
+      color: #222;
+    }
+    h1, h2, h3 {
+      color: #333;
+    }
+    section {
+      margin-bottom: 2rem;
+      padding: 1rem;
+      background: white;
+      border-radius: 0.5rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    form input, form textarea, form button {
+      display: block;
+      width: 100%;
+      margin-top: 0.5rem;
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+    button.copy-btn, button.upload-btn {
+      margin-top: 1rem;
+      background: #111;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    .success-message {
+      color: green;
+      margin-top: 0.5rem;
+    }
+  </style>
 </head>
 <body>
-    <h1>$FANC.DEV</h1>
-    <div class="music-player">
-        <audio controls id="audio-player">
-            <source src="" type="audio/mpeg" id="audio-source">
-            Your browser does not support the audio element.
-        </audio>
-    </div>
+  <h1>Osana AD</h1>
+
+  <!-- IPFS Upload Section -->
+  <section>
+    <h2>🌐 Upload Your Track to IPFS</h2>
+    <p>Select your audio file and upload it to IPFS. After upload, a link will appear — paste that into the submission form below.</p>
+    <input type="file" id="ipfs-file" accept="audio/*" />
+    <button class="upload-btn" onclick="uploadToIPFS()">Upload to IPFS</button>
+    <div id="ipfs-result" class="success-message"></div>
+  </section>
+
+  <!-- Music Submission Section -->
+  <section>
+    <h2>🎵 Submit Your Music</h2>
+    <form id="music-form">
+      <label for="name">Your Name</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="ipfsLink">IPFS Link (from upload above)</label>
+      <input type="url" id="ipfsLink" name="ipfsLink" placeholder="e.g., https://ipfs.io/ipfs/..." required />
+
+      <label for="message">Tell us a bit about this track</label>
+      <textarea id="message" name="message" rows="4"></textarea>
+
+      <button type="submit">Submit Track</button>
+      <div class="success-message" id="form-message"></div>
+    </form>
+  </section>
+
+  <!-- Audio Preview -->
+  <section class="music-player">
+    <h2>🎧 Preview Audio from IPFS</h2>
+    <audio controls id="audio-player">
+      <source src="" type="audio/mpeg" id="audio-source" />
+      Your browser does not support the audio element.
+    </audio>
     <button id="load-music">Load Music from IPFS</button>
-    <script src="dist/bundle.js"></script>
-    <script type="module">
-        import { createClient } from 'https://esm.sh/viem'
+  </section>
 
-        const CID = "bafybeidlpe3agjgpan22aqv4iu54y7txhoairv5m3scg4iphyhkdcbfpx4"
-        const ipfsGateway = "https://ipfs.io/ipfs/";
+  <!-- Tag & Metadata Section -->
+  <section>
+    <h2>🎞️ Project Tags & Genre Metadata</h2>
+    <p id="tag-list">
+      Sci-Fi Thriller, Psychological Thriller, Time Travel, Temporal Manipulation, Alternate Timelines, Parallel Realities, Futuristic Espionage, Cyber Thriller, Tech-Noir, High-Concept Sci-Fi, Sci-Fi Mystery, Nonlinear Narrative, Real-Time Thriller,
+      Temporal Pincer, Truth vs Lies, Surveillance, Interrogation, Memory Manipulation, Dual Perspectives, Countdown Timer, Trust & Betrayal, Multiverse Theory, Paradox, Identity Crisis, Strategic Misinformation, Determinism vs Free Will,
+      High-Resolution (2K+), High Frame Rate (60FPS), Split-Screen, Glitch Aesthetics, Visual Distortion, Camouflage, Hidden Forces, Handheld Temporal Device, Low-Tech Communication, Puzzle Narrative, Diegetic Clocks, Minimalist Sound, Blue/Orange Lighting,
+      Philosophical Sci-Fi, Ethical Dilemmas, Nonlinear Storytelling, Real-Time Tension, Tech-Centric Narratives, Experimental Formats, Genre-Crossing
+    </p>
+    <button class="copy-btn" onclick="copyTags()">Copy All Tags</button>
+    <div class="success-message" id="copy-message"></div>
+  </section>
 
-        const audioPlayer = document.getElementById("audio-player");
-        const audioSource = document.getElementById("audio-source");
-        const loadButton = document.getElementById("load-music");
+  <!-- Links -->
+  <section>
+    <h2>🔗 Links & Previews</h2>
+    <ul>
+      <li><a href="https://untd.io/r/AsFysEp847Cj">PRE_SAVE HOMEDOM</a></li>
+      <li><a href="https://medium.com/@austinagbo/about">MEDIUM</a></li>
+      <li><a href="https://www.instagram.com/fancradle">OSANAGRAM</a></li>
+    </ul>
+  </section>
 
-        loadButton.addEventListener("click", () => {
-            const fullUrl = `${ipfsGateway}${CID}`;
-            audioSource.src = fullUrl;
-            audioPlayer.load();
-            audioPlayer.play();
-        });
-    </script>
-    
+  <!-- Scripts -->
+  <script src="https://unpkg.com/ipfs-http-client/dist/index.min.js"></script>
+  <script>
+    async function uploadToIPFS() {
+      const fileInput = document.getElementById('ipfs-file');
+      const resultBox = document.getElementById('ipfs-result');
+
+      if (!fileInput.files.length) {
+        resultBox.textContent = "Please select a file first.";
+        return;
+      }
+
+      const file = fileInput.files[0];
+      const ipfs = window.IpfsHttpClient.create({ url: 'https://ipfs.infura.io:5001/api/v0' });
+
+      try {
+        const added = await ipfs.add(file);
+        const cid = added.path;
+        const link = `https://ipfs.io/ipfs/${cid}`;
+        resultBox.innerHTML = `✅ Uploaded! IPFS Link: <a href="${link}" target="_blank">${link}</a>`;
+      } catch (err) {
+        resultBox.textContent = "❌ Upload failed. Please try again.";
+        console.error(err);
+      }
+    }
+
+    function copyTags() {
+      const tags = document.getElementById("tag-list").innerText;
+      navigator.clipboard.writeText(tags).then(() => {
+        document.getElementById("copy-message").textContent = "✅ Tags copied to clipboard!";
+      });
+    }
+
+    document.getElementById("music-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      document.getElementById("form-message").textContent = "✅ Thanks! Your track has been received.";
+      this.reset();
+    });
+
+    document.getElementById("load-music").addEventListener("click", () => {
+      const CID = "bafybeidlpe3agjgpan22aqv4iu54y7txhoairv5m3scg4iphyhkdcbfpx4";
+      const fullUrl = `https://ipfs.io/ipfs/${CID}`;
+      document.getElementById("audio-source").src = fullUrl;
+      document.getElementById("audio-player").load();
+      document.getElementById("audio-player").play();
+    });
+  </script>
 </body>
 </html>
+
