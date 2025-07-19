@@ -7,7 +7,7 @@
   <meta name="description" content="Submit music and collaborate on fancradle. Upload your audio to IPFS and get involved." />
 
   <!-- JSON-LD Structured Data -->
-  <script type="application/ld+json">
+  <script type="application/ld+json" id="metadata-json">
   {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
@@ -69,6 +69,16 @@
       color: green;
       margin-top: 0.5rem;
     }
+    .tag-btn {
+      background: #eee;
+      border: none;
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+   }
+
   </style>
 </head>
 <body>
@@ -119,13 +129,7 @@
   <!-- Tag & Metadata Section -->
   <section>
     <h2>🎞️ Project Tags & Genre Metadata</h2>
-    <p id="tag-list">
-      Sci-Fi Thriller, Psychological Thriller, Time Travel, Temporal Manipulation, Alternate Timelines, Parallel Realities, Futuristic Espionage, Cyber Thriller, Tech-Noir, High-Concept Sci-Fi, Sci-Fi Mystery, Nonlinear Narrative, Real-Time Thriller,
-      Temporal Pincer, Truth vs Lies, Surveillance, Interrogation, Memory Manipulation, Dual Perspectives, Countdown Timer, Trust & Betrayal, Multiverse Theory, Paradox, Identity Crisis, Strategic Misinformation, Determinism vs Free Will,
-      High-Resolution (2K+), High Frame Rate (60FPS), Split-Screen, Glitch Aesthetics, Visual Distortion, Camouflage, Hidden Forces, Handheld Temporal Device, Low-Tech Communication, Puzzle Narrative, Diegetic Clocks, Minimalist Sound, Blue/Orange Lighting,
-      Philosophical Sci-Fi, Ethical Dilemmas, Nonlinear Storytelling, Real-Time Tension, Tech-Centric Narratives, Experimental Formats, Genre-Crossing
-    </p>
-    <button class="copy-btn" onclick="copyTags()">Copy All Tags</button>
+    <div id="tag-list" style="display: flex; flex-wrap: wrap; gap: 0.5rem;"></div>
     <div class="success-message" id="copy-message"></div>
   </section>
 
@@ -133,8 +137,8 @@
   <section>
     <h2>🔗 Links & Previews</h2>
     <ul>
-      <li><a href="https://untd.io/r/AsFysEp847Cj">PRE_SAVE HOMEDOM</a></li> <br />
-      <li><a href="https://medium.com/@austinagbo/about">MEDIUM</a></li> <br />
+      <li><a href="https://untd.io/r/AsFysEp847Cj">PRE_SAVE HOMEDOM</a></li> <br /> <br />
+      <li><a href="https://medium.com/@austinagbo/about">MEDIUM</a></li> <br /> <br />
       <li><a href="https://www.instagram.com/fancradle">OSANAGRAM</a></li>
     </ul>
   </section>
@@ -142,6 +146,49 @@
   <!-- Scripts -->
   <script src="https://unpkg.com/ipfs-http-client/dist/index.min.js"></script>
   <script>
+    function copyTag(button) {
+  const text = button.textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const msg = document.getElementById("copy-message");
+    msg.textContent = `✅ Copied "${text}" to clipboard!`;
+    setTimeout(() => msg.textContent = "", 2000);
+  });
+}
+
+function generateTagsFromMetadata() {
+  const metadataScript = document.getElementById("metadata-json");
+  if (!metadataScript) return;
+
+  try {
+    const metadata = JSON.parse(metadataScript.textContent);
+    const tags = new Set();
+
+    if (Array.isArray(metadata.genre)) {
+      metadata.genre.forEach(tag => tags.add(tag));
+    }
+
+    if (Array.isArray(metadata.keywords)) {
+      metadata.keywords.forEach(tag => tags.add(tag));
+    }
+
+    const tagList = document.getElementById("tag-list");
+
+    tags.forEach(tag => {
+      const btn = document.createElement("button");
+      btn.textContent = tag;
+      btn.className = "tag-btn";
+      btn.onclick = () => copyTag(btn);
+      tagList.appendChild(btn);
+    });
+
+  } catch (e) {
+    console.error("Failed to parse JSON-LD metadata", e);
+  }
+}
+
+// Run after DOM loads
+window.addEventListener("DOMContentLoaded", generateTagsFromMetadata);
+
     async function uploadToIPFS() {
       const fileInput = document.getElementById('ipfs-file');
       const resultBox = document.getElementById('ipfs-result');
@@ -163,13 +210,6 @@
         resultBox.textContent = "❌ Upload failed. Please try again.";
         console.error(err);
       }
-    }
-
-    function copyTags() {
-      const tags = document.getElementById("tag-list").innerText;
-      navigator.clipboard.writeText(tags).then(() => {
-        document.getElementById("copy-message").textContent = "✅ Tags copied to clipboard!";
-      });
     }
 
     document.getElementById("music-form").addEventListener("submit", function (e) {
