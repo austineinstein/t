@@ -1,0 +1,28 @@
+import heroBg from "@/assets/hero-bg.jpg";
+
+const HeroSection = () => {
+  return (
+    <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${heroBg})` }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background" />
+      
+      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+        <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-4 bg-gradient-to-r from-primary via-chart-1 to-chart-2 bg-clip-text text-transparent animate-fade-in">
+          Osana AD
+        </h1>
+        <p className="text-xl md:text-2xl text-muted-foreground mb-2">
+          fancradle • $FANC.DEV
+        </p>
+        <p className="text-lg text-muted-foreground/80 max-w-2xl mx-auto">
+          A genre-bending multimedia project inviting collaborators to submit music 
+          and participate in an upcoming sci-fi thriller film.
+        </p>
+      </div>
+    </section>
+  );
+};
+
+export default HeroSection;
