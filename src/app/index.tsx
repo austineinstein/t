@@ -1,8 +1,8 @@
-import HeroSection from "@/components/HeroSection";
-import IPFSUploadSection from "@/components/IPFSUploadSection";
-import MusicSubmissionForm from "@/components/MusicSubmissionForm";
-import TagsSection from "@/components/TagsSection";
-import LinksSection from "@/components/LinksSection";
+import HeroSection from "./components/HeroSection";
+import IPFSUploadSection from "./components/IPFSUploadSection";
+import MusicSubmissionForm from "./components/MusicSubmissionForm";
+import TagsSection from "./components/TagsSection";
+import LinksSection from "./components/LinksSection";
 
 const Index = () => {
   return (
