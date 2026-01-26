@@ -1,12 +1,16 @@
-import heroBg from "./assets/hero-bg.jpg";
+//import heroBg from "./assets/hero-bg.jpg";
 
 const HeroSection = () => {
   return (
     <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${heroBg})` }}
-      />
+      <div className="relative h-[600px]">
+        <img
+          src="/hero-bg.jpg"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
+          />
+          </div>
+
       <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background" />
       
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
