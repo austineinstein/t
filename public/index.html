@@ -1,231 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Shopnet Curator</title>
-  <meta name="description" content="Submit music and collaborate on fancradle. Upload your audio to IPFS and get involved." />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Music Promotion & Compliance</title>
 
-  <!-- JSON-LD Structured Data -->
-  <script type="application/ld+json" id="metadata-json">
-  {
-    "@context": "https://schema.org",
-    "@type": "CreativeWork",
-    "name": "fancradle",
-    "alternateName": "$FANC.DEV",
-    "description": "A genre-bending multimedia project inviting collaborators to submit music and participate in an upcoming sci-fi thriller film.",
-    "genre": ["Sci-Fi Thriller", "Psychological Thriller", "Time Travel", "Nonlinear Narrative"],
-    "keywords": [
-      "Temporal Pincer",
-      "Memory Manipulation",
-      "Multiverse Theory",
-      "Real-Time Tension",
-      "High Frame Rate",
-      "Glitch Aesthetics",
-      "Puzzle Narrative"
-    ],
-    "creator": {
-      "@type": "Person",
-      "name": "Anonymous"
-    },
-    "dateCreated": "2025-07-18"
-  }
-  </script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <style>
-    body {
-      font-family: sans-serif;
-      margin: 2rem;
-      background: #f9f9f9;
-      color: #222;
-    }
-    h1, h2, h3 {
-      color: #333;
-    }
-    section {
-      margin-bottom: 2rem;
-      padding: 1rem;
-      background: white;
-      border-radius: 0.5rem;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
-    }
-    form input, form textarea, form button {
-      display: block;
-      width: 100%;
-      margin-top: 0.5rem;
-      padding: 0.5rem;
-      font-size: 1rem;
-    }
-    button.copy-btn, button.upload-btn {
-      margin-top: 1rem;
-      background: #111;
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-      border-radius: 4px;
-    }
-    .success-message {
-      color: green;
-      margin-top: 0.5rem;
-    }
-    .tag-btn {
-      background: #eee;
-      border: none;
-      padding: 0.4rem 0.8rem;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      transition: background 0.2s;
-   }
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
 
-  </style>
+body {
+  background: #f7f7f7;
+  color: #333;
+}
+
+.hero {
+  background: linear-gradient(135deg, #1dbf73, #19a463);
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.hero h1 { font-size: 40px; margin-bottom: 15px; }
+.hero input {
+  width: 90%;
+  max-width: 500px;
+  padding: 14px;
+  border-radius: 30px;
+  border: none;
+  font-size: 16px;
+}
+
+/* CATEGORY GRID */
+.categories {
+  padding: 50px 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 25px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.cat-card {
+  background: white;
+  padding: 30px 20px;
+  border-radius: 12px;
+  text-align: center;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.cat-card i {
+  font-size: 32px;
+  color: #1dbf73;
+  margin-bottom: 15px;
+}
+
+.cat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+/* SERVICES */
+.services {
+  padding: 40px 20px 80px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.service-card {
+  background: white;
+  padding: 25px;
+  border-radius: 14px;
+  transition: 0.3s ease;
+}
+
+.service-card i {
+  font-size: 24px;
+  color: #1dbf73;
+  margin-bottom: 10px;
+}
+
+.service-card h4 { margin-bottom: 10px; }
+.service-card p {
+  font-size: 14px;
+  margin-bottom: 15px;
+  color: #666;
+}
+
+.service-card button {
+  background: #1dbf73;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.service-card button:hover { background: #159a5b; }
+.service-card:hover { box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
+
+/* COMPLIANCE SECTION */
+.compliance {
+  background: white;
+  padding: 60px 20px;
+}
+
+.compliance h2 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.compliance p {
+  max-width: 1000px;
+  margin: 0 auto 15px;
+  line-height: 1.6;
+}
+
+.compliance ul {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-left: 20px;
+  line-height: 1.7;
+}
+
+/* FOOTER */
+footer {
+  background: #222;
+  color: #aaa;
+  text-align: center;
+  padding: 25px;
+  font-size: 14px;
+}
+</style>
 </head>
+
 <body>
-  <h1>Osana AD</h1>
 
-  <!-- IPFS Upload Section -->
-  <section>
-    <h2>🌐 Upload Your Track to IPFS</h2>
-    <p>Select your audio file and upload it to IPFS. After upload, a link will appear — paste that into the submission form below.</p>
-    <input type="file" id="ipfs-file" accept="audio/*" />
-    <button class="upload-btn" onclick="uploadToIPFS()">Upload to IPFS</button>
-    <div id="ipfs-result" class="success-message"></div>
-  </section>
+<!-- HERO -->
+<section class="hero">
+  <h1>Music Promotion Services</h1>
+  <input type="search" placeholder="Search music promotion services...">
+</section>
 
-  <!-- Music Submission Section -->
-  <section>
-    <h2>🎵 Submit Your Music</h2>
-    <form id="music-form">
-      <label for="name">Your Name</label>
-      <input type="text" id="name" name="name" required />
+<!-- CATEGORY ICONS -->
+<section class="categories">
+  <div class="cat-card">
+    <i class="fas fa-headphones"></i>
+    <h3>Spotify Promotion</h3>
+  </div>
+  <div class="cat-card">
+    <i class="fas fa-compact-disc"></i>
+    <h3>Playlist Placement</h3>
+  </div>
+  <div class="cat-card">
+    <i class="fas fa-bullhorn"></i>
+    <h3>Paid Advertising</h3>
+  </div>
+  <div class="cat-card">
+    <i class="fas fa-users"></i>
+    <h3>Organic Growth</h3>
+  </div>
+  <div class="cat-card">
+    <i class="fas fa-music"></i>
+    <h3>Streaming Boost</h3>
+  </div>
+</section>
 
-      <label for="email">Email Address</label>
-      <input type="email" id="email" name="email" required />
+<!-- SERVICE CARDS -->
+<section class="services">
+  <div class="service-card">
+    <i class="fas fa-fire"></i>
+    <h4>Premium Playlist Placement</h4>
+    <p>Get featured on curated Spotify playlists with real listeners.</p>
+    <button>Explore</button>
+  </div>
 
-      <label for="ipfsLink">IPFS Link (from upload above)</label>
-      <input type="url" id="ipfsLink" name="ipfsLink" placeholder="e.g., https://ipfs.io/ipfs/..." required />
+  <div class="service-card">
+    <i class="fas fa-ad"></i>
+    <h4>Music Ads Campaign</h4>
+    <p>Launch targeted ad campaigns to grow streams and followers.</p>
+    <button>Explore</button>
+  </div>
 
-      <label for="message">Tell us a bit about this track</label>
-      <textarea id="message" name="message" rows="4"></textarea>
+  <div class="service-card">
+    <i class="fas fa-chart-line"></i>
+    <h4>Organic Promotion Strategy</h4>
+    <p>Custom growth plan for sustainable audience development.</p>
+    <button>Explore</button>
+  </div>
+</section>
 
-      <button type="submit">Submit Track</button>
-      <div class="success-message" id="form-message"></div>
-    </form>
-  </section>
+<!-- COMPLIANCE & TRANSPARENCY -->
+<section class="compliance">
+  <h2>Compliance & Transparency</h2>
 
-  <!-- Audio Preview -->
-   <!--     
-  <section class="music-player">
-    <h2>🎧 Preview Audio from IPFS</h2>
-    <audio controls id="audio-player">
-      <source src="" type="audio/mpeg" id="audio-source" />
-      Your browser does not support the audio element.
-    </audio>
-    <button id="load-music">Load Music from IPFS</button>
-  </section>
-   -->
+  <p><strong>Overview</strong></p>
+  <p>We operate a campaign-driven music and media services business providing professional services related to music promotion and intellectual property support. All payments are received for documented services under commercial agreements.</p>
 
-  <!-- Tag & Metadata Section -->
-  <section>
-    <h2>🎞️ Project Tags & Genre Metadata</h2>
-    <div id="tag-list" style="display: flex; flex-wrap: wrap; gap: 0.5rem;"></div>
-    <div class="success-message" id="copy-message"></div>
-  </section>
+  <p><strong>Business Model</strong></p>
+  <ul>
+    <li>Campaign strategy and execution</li>
+    <li>Music promotion and distribution support</li>
+    <li>Creative and licensing coordination</li>
+    <li>Service-based commercial agreements</li>
+  </ul>
 
-  <!-- Links -->
-  <section>
-    <h2>🔗 Links & Previews</h2>
-    <ul>
-      <li><a href="https://untd.io/r/AsFysEp847Cj">PRE_SAVE HOMEDOM</a></li> <br /> <br />
-      <li><a href="https://medium.com/@austinagbo/about">MEDIUM</a></li> <br /> <br />
-      <li><a href="https://www.instagram.com/fancradle">OSANAGRAM</a></li>
-    </ul>
-  </section>
+  <p><strong>Nature of Payments</strong></p>
+  <p>Payments represent compensation for services rendered. We do not offer investment products, financial returns, or speculative opportunities.</p>
 
-  <!-- Scripts -->
-  <script src="https://unpkg.com/ipfs-http-client/dist/index.min.js"></script>
-  <script>
-    function copyTag(button) {
-  const text = button.textContent;
-  navigator.clipboard.writeText(text).then(() => {
-    const msg = document.getElementById("copy-message");
-    msg.textContent = `✅ Copied "${text}" to clipboard!`;
-    setTimeout(() => msg.textContent = "", 2000);
-  });
-}
+  <p><strong>Documentation</strong></p>
+  <p>Records of agreements and invoices are maintained and can be provided for compliance or verification purposes.</p>
 
-function generateTagsFromMetadata() {
-  const metadataScript = document.getElementById("metadata-json");
-  if (!metadataScript) return;
+  <p><strong>Regulatory Alignment</strong></p>
+  <p>Operations align with applicable commercial and data protection standards in the UK jurisdiction.</p>
 
-  try {
-    const metadata = JSON.parse(metadataScript.textContent);
-    const tags = new Set();
+  <p><strong>Contact Osana</strong></p>
+  <p>Whatsapp wa.me/447704793191<br>
+     Business: Flystore Ltd</p>
 
-    if (Array.isArray(metadata.genre)) {
-      metadata.genre.forEach(tag => tags.add(tag));
-    }
+  <p><em>Plain-language summary: We provide professional music services under commercial agreements and operate transparently in accordance with applicable standards.</em></p>
+</section>
 
-    if (Array.isArray(metadata.keywords)) {
-      metadata.keywords.forEach(tag => tags.add(tag));
-    }
+<footer>
+  ©️ 2026 Flystore Ltd. All Rights Reserved.
+</footer>
 
-    const tagList = document.getElementById("tag-list");
-
-    tags.forEach(tag => {
-      const btn = document.createElement("button");
-      btn.textContent = tag;
-      btn.className = "tag-btn";
-      btn.onclick = () => copyTag(btn);
-      tagList.appendChild(btn);
-    });
-
-  } catch (e) {
-    console.error("Failed to parse JSON-LD metadata", e);
-  }
-}
-
-// Run after DOM loads
-window.addEventListener("DOMContentLoaded", generateTagsFromMetadata);
-
-    async function uploadToIPFS() {
-      const fileInput = document.getElementById('ipfs-file');
-      const resultBox = document.getElementById('ipfs-result');
-
-      if (!fileInput.files.length) {
-        resultBox.textContent = "Please select a file first.";
-        return;
-      }
-
-      const file = fileInput.files[0];
-      const ipfs = window.IpfsHttpClient.create({ url: 'https://ipfs.infura.io:5001/api/v0' });
-
-      try {
-        const added = await ipfs.add(file);
-        const cid = added.path;
-        const link = `https://ipfs.io/ipfs/${cid}`;
-        resultBox.innerHTML = `✅ Uploaded! IPFS Link: <a href="${link}" target="_blank">${link}</a>`;
-      } catch (err) {
-        resultBox.textContent = "❌ Upload failed. Please try again.";
-        console.error(err);
-      }
-    }
-
-    document.getElementById("music-form").addEventListener("submit", function (e) {
-      e.preventDefault();
-      document.getElementById("form-message").textContent = "✅ Thanks! Your track has been received.";
-      this.reset();
-    });
-
-    document.getElementById("load-music").addEventListener("click", () => {
-      const CID = "bafybeidlpe3agjgpan22aqv4iu54y7txhoairv5m3scg4iphyhkdcbfpx4";
-      const fullUrl = `https://ipfs.io/ipfs/${CID}`;
-      document.getElementById("audio-source").src = fullUrl;
-      document.getElementById("audio-player").load();
-      document.getElementById("audio-player").play();
-    });
-  </script>
 </body>
 </html>
-
